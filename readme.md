@@ -1,2 +1,2 @@
 # Github-followers-list
-(link)['https://github-followers-list.herokuapp.com']
+https://github-followers-list.herokuapp.com'
