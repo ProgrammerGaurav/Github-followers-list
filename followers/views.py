@@ -17,6 +17,8 @@ def search(request):
 
         my_string = str(link)
         username = my_string.split("com/", 1)[1]
+        if username[-1] == "/":
+            username = username[:-1]
 
         with urllib.request.urlopen("https://api.github.com/users/"+username+"/followers") as url:
             data = json.loads(url.read().decode())

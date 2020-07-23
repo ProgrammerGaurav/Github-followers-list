@@ -12,6 +12,7 @@ body {
     width: 100%;
     color: #fff;
     background-color: #24292E;
+    z-index: 9999999999;
 }
 
 .navbar-brand {
