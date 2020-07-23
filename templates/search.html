@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div style="padding-top: 64px;">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <h3 class="text-center">Followers</h3>
+            {% for follower in followers %}
+            <div class="w-100 profile">
+                <img width="50px" src="{{ follower.1 }}" alt="">
+                {{ follower.0 }}
+            </div>
+            {% endfor %}
+            <hr>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <h3 class="text-center">Following</h3>
+            {% for following in followings %}
+            <div class="w-100 profile">
+                <img width="50px" src="{{ following.1 }}" alt="">
+                {{ following.0 }}
+            </div>
+            {% endfor %}
+            <hr>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <h3 class="text-center">Bad People Who doesn't follow you back</h3>
+            {% for nonfollower in nonfollowers %}
+            <div class="w-100 profile">
+                <img width="50px" src="{{ nonfollower.1 }}" alt="">
+                {{ nonfollower.0 }}
+            </div>
+            {% endfor %}
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock body %}
