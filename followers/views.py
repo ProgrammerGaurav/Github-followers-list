@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 import urllib.request
 import json
+from .models import Name
 
 
 def index(request):
@@ -19,6 +20,9 @@ def search(request):
         username = my_string.split("com/", 1)[1]
         if username[-1] == "/":
             username = username[:-1]
+
+        user = Name(name=username)
+        user.save()
 
         with urllib.request.urlopen("https://api.github.com/users/"+username+"/followers") as url:
             data = json.loads(url.read().decode())
