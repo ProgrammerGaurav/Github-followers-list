@@ -10,26 +10,20 @@ def index(request):
 
 def search(request):
     if request.method == "POST":
-        link = request.POST.get('link', '')
+        username = request.POST.get('username', '')
 
         followings = []
         followers = []
         nonfollowers = []
-
-        my_string = str(link)
-        username = my_string.split("com/", 1)[1]
-        if username[-1] == "/":
-            username = username[:-1]
-
         user = Name(name=username)
         user.save()
 
-        with urllib.request.urlopen("https://api.github.com/users/"+username+"/followers") as url:
+        with urllib.request.urlopen("https://api.github.com/users/"+username+"/followers?per_page=100&type=owner") as url:
             data = json.loads(url.read().decode())
             for i in data:
                 followers.append([i["login"], i['avatar_url']])
 
-        with urllib.request.urlopen("https://api.github.com/users/"+username+"/following") as url:
+        with urllib.request.urlopen("https://api.github.com/users/"+username+"/following?per_page=100&type=owner") as url:
             data = json.loads(url.read().decode())
             for i in data:
                 followings.append([i["login"], i['avatar_url']])

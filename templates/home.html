@@ -6,7 +6,8 @@
         <form action="search/" method="POST">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Github Link" name="link" required>
+                <input type="text" class="form-control" placeholder="Github UserName" name="username"
+                    placeholder="programmergaurav" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
